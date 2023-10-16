@@ -2,7 +2,7 @@
 volatile enum snrt_ssr_dm;
 volatile enum snrt_ssr_dim;
 
-extern void snrt_ssr_enable();
+/*extern void snrt_ssr_enable();*/
 extern void snrt_ssr_disable();
 extern void snrt_ssr_loop_1d(enum snrt_ssr_dm dm, size_t b0, size_t s0);
 extern void snrt_ssr_loop_2d(enum snrt_ssr_dm dm, size_t b0, size_t b1,
