@@ -39,7 +39,7 @@ enum {
 };
 
 /// Enable SSR.
-inline void snrt_ssr_enable() {
+extern inline void snrt_ssr_enable() {
 #ifdef __TOOLCHAIN_LLVM__
     __builtin_ssr_enable();
 #else
@@ -59,14 +59,14 @@ inline void snrt_ssr_disable() {
 inline uint32_t read_ssr_cfg(uint32_t reg, uint32_t dm) {
     uint32_t value;
     asm volatile("scfgri %[value], %[dm] | %[reg]<<5\n"
-                 : [ value ] "=r"(value)
-                 : [ dm ] "i"(dm), [ reg ] "i"(reg));
+                 : [value] "=r"(value)
+                 : [dm] "i"(dm), [reg] "i"(reg));
     return value;
 }
 
 inline void write_ssr_cfg(uint32_t reg, uint32_t dm, uint32_t value) {
     asm volatile("scfgwi %[value], %[dm] | %[reg]<<5\n" ::[value] "r"(value),
-                 [ dm ] "i"(dm), [ reg ] "i"(reg));
+                 [dm] "i"(dm), [reg] "i"(reg));
 }
 
 // Configure an SSR data mover for a 1D loop nest.
